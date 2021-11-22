@@ -9,7 +9,7 @@
 >Find out details about the countries of the world and search for any country you want to know details about
 # Live Link
 You can open the website simply by clicking 
-> [live](http://127.0.0.1:5500/index.html)
+> [live](https://gsg-cf04.github.io/Muhanna-Ahmed-API/)
 # How to get the project on your device?
 * with git bash : write git clone then the url of the repository
 * $ git clone https://github.com/GSG-CF04/Muhanna-Ahmed-API.git
