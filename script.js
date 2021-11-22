@@ -1,7 +1,45 @@
-// Start Cards Section //
-
+/* Start Search Section */
+let inputValue = document.querySelector(".input");
+let searchBtn = document.querySelector(".search-btn");
 let cards = document.querySelector(".cards");
-
+let back = document.querySelector(".back");
+let url = "https://restcountries.com/v3.1/all" 
+    fetch(url)
+    .then(getData=>{
+        return getData.json();  
+    })
+    .then((data) => {
+        searchBtn.addEventListener("click",search);
+        function search(){
+            cards.innerHTML = "" 
+            let inputSearch = inputValue.value 
+            inputValue.value = ""
+            let notFound = true ;
+            for(let i = 0 ; i < data.length ; i++){
+                if(inputSearch == data[i].name.common){
+                    notFound = false ;
+                    cards.innerHTML = `
+                            <div class="card" style="margin:auto">
+                                <img src = ${data[i].flags.svg} alt="Flag">
+                                <div class="details">
+                                    <h3>${data[i].name.common}</h3>
+                                    <p><span>Capital: </span> ${data[i].capital[0]}</p>
+                                    <p><span>Population: </span>${data[i].population}</p>
+                                    <p><span>Language: </span>${Object.values(data[i].languages)[0]}</p>
+                                    <p><span>Continents: </span>${data[i].continents}</p>
+                                </div>
+                            </div>`
+                }
+            }
+            if(notFound){
+                alert("Enter the correct country name")
+                setTimeout(()=>location.reload() , 1000);
+                // location.reload();
+            }
+        }
+    });
+/* End Search Section */
+// Start Cards Section //
 function random(min, max) {
     return Math.floor(min + Math.random()*(max + 1 - min))
 }
